@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24/7 Gym</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #ff4d4d;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('./gymimages/professional-gym-interior-vomd24bjg2wxd65f.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-content button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero-content button:hover {
+            background-color: #e04343;
+        }
+
+        .cta-section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-section .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-section button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cta-section button:hover {
+            background-color: #e04343;
+        }
+
+        .training-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #222;
+        }
+
+        .training-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .training-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .training-item h3 {
+            font-size: 24px;
+            margin: 15px 0 10px;
+        }
+
+        .training-item p {
+            font-size: 16px;
+        }
+
+        .contact-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #1a1a1a;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 30px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .contact-form img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact-form button:hover {
+            background-color: #e04343;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-details div {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+
+        .contact-details h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-details p {
+            font-size: 16px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #000;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">24/7 Gym</div>
+        <nav>
+            <a href="#">Gym Membership</a>
+            <a href="#">Near Me</a>
+            <a href="#">Studio Classes</a>
+            <a href="#">Training</a>
+            <a href="#">Lifestyle</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>YOUR RESULTS. YOUR WAY.</h1>
+            <p>$0 INITIATION<br>Try us for 7 days FREE</p>
+            <button>GET STARTED</button>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>FIND YOUR LOCAL 24 HOUR FITNESS GYM</h2>
+        <p>Making the decision to join a gym is a great first step towards improving your health and quality of life. At
+            24 Hour Fitness, we are here to help make your gym experience fun, effective, and easy.</p>
+        <div class="buttons">
+            <button>SEE WHAT CLUBS ARE NEAR YOU</button>
+            <button>USE CURRENT LOCATION</button>
+        </div>
+    </section>
+
+    <section class="training-section">
+        <h2>TRAINING PROGRAMS</h2>
+        <div class="training-grid">
+            <div class="training-item">
+                <img src="./gymimages/1642718.webp" alt="Yoga">
+                <h3>Yoga</h3>
+                <p>Improve flexibility and reduce stress with our guided yoga sessions for all levels.</p>
+            </div>
+            <div class="training-item">
+                <img src="./gymimages/dance-studio-95763584-57c4972c3df78cc16ec91e7a.jpg" alt="Dance">
+                <h3>Dance</h3>
+                <p>Have fun and burn calories with our energetic dance classes, from Zumba to hip-hop.</p>
+            </div>
+            <div class="training-item">
+                <img src="./gymimages/OIP.jpg" alt="Meditation">
+                <h3>Meditation</h3>
+                <p>Find inner peace and focus through our meditation sessions led by experts.</p>
+            </div>
+            <div class="training-item">
+                <img src="./gymimages/weight-gain-centre-main.jpg"
+                    alt="Weight Loss">
+                <h3>Weight Loss</h3>
+                <p>Achieve your weight loss goals with personalized plans and high-intensity workouts.</p>
+            </div>
+            <div class="training-item">
+                <img src="./gymimages/weight-gain-centre-main.jpg" alt="Weight Gain">
+                <h3>Weight Gain</h3>
+                <p>Build muscle mass with strength training and nutrition guidance tailored for you.</p>
+            </div>
+            <div class="training-item">
+                <img src="./gymimages/OIP (1).jpg"
+                    alt="Cardio">
+                <h3>Cardio</h3>
+                <p>Boost your heart health with our cardio sessions, including treadmill and cycling.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>CONTACT US</h2>
+        <p>We're here to help you on your fitness journey. Reach out to us!</p>
+        <div class="contact-form">
+            <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Contact Us">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">SEND MESSAGE</button>
+        </div>
+        <div class="contact-details">
+            <div>
+                <h3>Phone</h3>
+                <p>+1-800-555-1234</p>
+            </div>
+            <div>
+                <h3>Email</h3>
+                <p>support@247gym.com</p>
+            </div>
+            <div>
+                <h3>Address</h3>
+                <p>123 Fitness Street, City, Country</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025, All rights reserved @24/7Gym</p>
+    </footer>
+</body>
+
+</html>
